@@ -8,13 +8,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Student Tracker App</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../../css/simple-sidebar.css" rel="stylesheet">
+   <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}">
 
 </head>
 
@@ -24,14 +24,10 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Start Bootstrap </div>
+        <div class="sidebar-heading">Santa Clause</div>
         <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+            <a href="home" class="list-group-item list-group-item-action bg-light">Home</a>
+            <a href="sort" class="list-group-item list-group-item-action bg-light">Sort</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -48,21 +44,17 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                            Account
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Account Details</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="/logout">Log Out</a>
                         </div>
                     </li>
                 </ul>
@@ -70,9 +62,23 @@
         </nav>
 
         <div class="container-fluid">
-            <h1 class="mt-4">Simple Sidebar</h1>
-            <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+            <h1 class="mt-4">Students</h1>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Graduated</th>
+                    <th>Major</th>
+                    <th>Year of Graduation</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                @yield('content')
+                </tbody>
+            </table>
         </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -81,8 +87,11 @@
 <!-- /#wrapper -->
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 
 <!-- Menu Toggle Script -->
 <script>
