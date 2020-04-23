@@ -1,9 +1,7 @@
 @extends('layouts/index')
 @section('content')
-<div class="container">
+<table class="container">
 
-    @if(isset($q))
-        <p> The Search results for your query <b> {{$q}} </b> are :</p>
         <thead>
         <tr>
             <th>Id</th>
@@ -16,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($q as $student)
+        @foreach($students as $s)
             <tr>
                 <td>{{$s->id}}</td>
                 <td>{{$s->name}}</td>
@@ -32,5 +30,4 @@
         @endforeach
         </tbody>
         </table>
-    @endif
-</div>
+@stop

@@ -25,15 +25,7 @@ Route::resource('home', 'Students');
 Route::get('/search', function () {
     return view('search');
 });
-Route::any ( '/searchResults', function () {
-    $q = Request::get ( 'q' );
-    $student = \App\Students::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'major', 'LIKE', '%' . $q . '%' )->get ();
-    if (count ( $student ) > 0)
-        return view ( 'searchResults' )->withDetails ( $student )->withQuery ( $q );
-    else
-        return view ( 'searchResults' )->withMessage ( 'No Details found. Try to search again !' );
-} );
-
+Route::post('/searchResults', ['as'=>'searchResults', 'uses' => 'Students@searchStudent']);
 
 
 Route::get('/logout', 'Auth\LoginController@logout');

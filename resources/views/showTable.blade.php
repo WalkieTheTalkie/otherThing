@@ -12,7 +12,7 @@
 
     </tr>
     </thead>
-    <tbody>
+    <tbody>`
     <h2>Student Details</h2>
     <td>{{$student->id}}</td>
     <td>{{$student->name}}</td>

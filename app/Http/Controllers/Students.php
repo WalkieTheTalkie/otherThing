@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\cr;
+use App\StudentTables;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
 
@@ -49,6 +50,7 @@ class Students extends Controller
         request()->validate([
         'name'=>['required'],
             'last_name'=>['required'],
+            'Major'=>['required', 'min:3', 'max:3'],
             'realboys'=>['required', 'integer', 'min:1920','max:2050']
         ]);
         $student->name = request('name');
@@ -116,9 +118,13 @@ class Students extends Controller
         return redirect("/home");
     }
 
-    public function searchStudent(){
-        $keyword = Input::get('q');
-        $students = \App\Students::find($keyword);
-        return View::make('searchResults')->with('students', $students);
+    public function searchStudent(Request $request){
+        request()->validate([
+            'q'=>['required']
+        ]);
+        $keyword = \Request::get('q');
+        $students = \App\Students::where('name','LIKE','%'.$keyword.'%')
+            ->get();
+        return view('searchResults')->with('students', $students);
     }
 }
