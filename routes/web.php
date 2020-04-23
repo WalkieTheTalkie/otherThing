@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +22,22 @@ Route::get('/home', 'HomeController@index')
     ->middleware('auth');
 Route::resource('home', 'Students');
 
+Route::get('/search', function () {
+    return view('search');
+});
+Route::any ( '/searchResults', function () {
+    $q = Request::get ( 'q' );
+    $student = \App\Students::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'major', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $student ) > 0)
+        return view ( 'searchResults' )->withDetails ( $student )->withQuery ( $q );
+    else
+        return view ( 'searchResults' )->withMessage ( 'No Details found. Try to search again !' );
+} );
+
+
+
 Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/why', 'something@index')
+    ->name('why')
+    ->middleware('auth');

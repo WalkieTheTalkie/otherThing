@@ -14,7 +14,7 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-   <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}">
 
 </head>
 
@@ -27,7 +27,7 @@
         <div class="sidebar-heading">Santa Clause</div>
         <div class="list-group list-group-flush">
             <a href="http://127.0.0.1:8000/home" class="list-group-item list-group-item-action bg-light">Home</a>
-            <a href="http://127.0.0.1:8000/search" class="list-group-item list-group-item-action bg-light">Search</a>
+            <a href="http://127.0.0.1:8000/sort" class="list-group-item list-group-item-action bg-light">Sort</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -37,6 +37,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/why">die.</a>
+                        <a class="nav-link" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,9 +62,33 @@
         </nav>
 
         <div class="container-fluid">
-            <h1 class="mt-4">Students</h1>
-            <table class="table table-striped table-hover">
-                @yield('content')
+            <h1 class="mt-4">Add Student</h1>
+            <form action="/home" method="post">
+                @csrf
+                    First Name: <input type="text"
+                                       name="name"
+                                       value="{{old('name')}}">
+                <p style="color:red">{{$errors->first('name')}}</p>
+                    Last Name: <input type="text"
+                                   name="last_name"
+                                   value="{{old('last_name')}}" >
+                <p style="color:red">{{$errors->first('last_name')}}</p>
+
+               Status: <select name="graduated">
+                    <option value = "0">Not Graduated</option>
+                    <option value = "1">Graduated</option>
+                </select>
+<br/>
+                <br/>Major: <input type='text'
+                              name='Major'
+                              value="{{old('Major')}}">
+                <p style="color:red">{{$errors->first('Major')}}</p>
+
+                Year of Graduation: <input type="text" name="realboys">
+                <p style="color:red">{{$errors->first('realboys')}}</p>
+                <input type="submit" value="add">
+            </form>
+
         </div>
     </div>
     <!-- /#page-content-wrapper -->

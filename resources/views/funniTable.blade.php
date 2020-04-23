@@ -1,19 +1,5 @@
-@extends('layouts/index')
-
-
+@extends('layouts/thishasnopurpose')
 @section('content')
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Graduated</th>
-        <th>Major</th>
-        <th>Year of Graduation</th>
-
-    </tr>
-    </thead>
-    <tbody>
     @foreach($students as $s)
         <tr>
 
@@ -21,7 +7,7 @@
             <td>{{$s->name}}</td>
             <td>{{$s->last_name}}</td>
             @if(($s->graduated)==1)
-            <td>Graduated</td>
+                <td>Graduated</td>
             @else
                 <td>Not Graduated</td>
             @endif
@@ -35,12 +21,5 @@
             </td>
         </tr>
     @endforeach
-    </tbody>
-        </table>
-        <td>
-            <form method="get" action="/home/create">
-                @csrf
-                <input type="submit" value="Create">
-            </form>
-        </td>
 @stop
+

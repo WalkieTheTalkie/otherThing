@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\cr;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class Students extends Controller
 {
@@ -32,7 +33,7 @@ class Students extends Controller
      */
     public function create()
     {
-        //
+        return \View::make('createTable');
     }
 
     /**
@@ -43,11 +44,20 @@ class Students extends Controller
      */
     public function store(Request $request)
     {
-        $student = new Students();
+        $student = new \App\Students();
 
         request()->validate([
-
+        'name'=>['required'],
+            'last_name'=>['required'],
+            'realboys'=>['required', 'integer', 'min:1920','max:2050']
         ]);
+        $student->name = request('name');
+        $student->last_name = request('last_name');
+        $student->graduated = request('graduated');
+        $student->Major = request('Major');
+        $student->realboys = request('realboys');
+        $student->save();
+        return redirect("/home");
     }
 
     /**
@@ -104,5 +114,11 @@ class Students extends Controller
         $student = \App\Students::find($id);
         $student->delete();
         return redirect("/home");
+    }
+
+    public function searchStudent(){
+        $keyword = Input::get('q');
+        $students = \App\Students::find($keyword);
+        return View::make('searchResults')->with('students', $students);
     }
 }

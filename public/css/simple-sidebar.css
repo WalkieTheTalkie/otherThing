@@ -26,9 +26,12 @@ body {
 }
 
 #page-content-wrapper {
-  min-width: 100vw;
+    min-width: 100vw;
 }
+.box{
+    text-align: center;
 
+}
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }

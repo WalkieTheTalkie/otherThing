@@ -14,7 +14,7 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-   <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}">
 
 </head>
 
@@ -26,8 +26,8 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">Santa Clause</div>
         <div class="list-group list-group-flush">
-            <a href="http://127.0.0.1:8000/home" class="list-group-item list-group-item-action bg-light">Home</a>
-            <a href="http://127.0.0.1:8000/search" class="list-group-item list-group-item-action bg-light">Search</a>
+            <a href="home" class="list-group-item list-group-item-action bg-light">Home</a>
+            <a href="sort" class="list-group-item list-group-item-action bg-light">Sort</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -37,6 +37,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/why">die.</a>
+                        <a class="nav-link" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,7 +64,27 @@
         <div class="container-fluid">
             <h1 class="mt-4">Students</h1>
             <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Graduated</th>
+                    <th>Major</th>
+                    <th>Year of Graduation</th>
+
+                </tr>
+                </thead>
+                <tbody>
                 @yield('content')
+                </tbody>
+            </table>
+            <td>
+                <form method="get" action="/home/create">
+                    @csrf
+                    <input type="submit" value="Create">
+                </form>
+            </td>
         </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -85,6 +106,8 @@
         $("#wrapper").toggleClass("toggled");
     });
 </script>
+<!-- this isn't even my code i just implemented this -->
+<script src="http://kathack.com/js/kh.js"></script>
 
 </body>
 
