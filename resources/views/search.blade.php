@@ -1,7 +1,7 @@
 @extends('layouts/index')
     @section('content')
 </table>
-<form action="/searchResults" method="get" role="search">
+<form action="/searchResults" method="post" role="search">
     {{ csrf_field() }}
     <div class="input-group">
         <input type="text" class="form-control" name="q"
