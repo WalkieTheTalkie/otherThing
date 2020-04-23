@@ -1,6 +1,4 @@
 @extends('layouts/index')
-
-
 @section('content')
     <thead>
     <tr>

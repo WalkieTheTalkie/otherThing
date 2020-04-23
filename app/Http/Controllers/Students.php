@@ -118,6 +118,11 @@ class Students extends Controller
         return redirect("/home");
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * search function
+     */
     public function searchStudent(Request $request){
         request()->validate([
             'q'=>['required']
